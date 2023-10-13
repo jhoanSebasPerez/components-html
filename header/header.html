@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3f9269fd9c.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Navbar Menu</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="hamburguer-icon">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+        <div class="group">
+            <a class="icon">
+                <i class="fa-solid fa-inbox"></i>
+            </a>
+
+            <a class="option">Imbox</a>
+            <a class="option">Sent</a>
+            <a class="option">Trash</a>
+        </div>
+        <div class="group">
+            <a class="option">Settings</a>
+            <a class="option selected">Log out</a>
+        </div>
+    </nav>
+
+    <script>
+        //Select and unselect feature
+        const options = document.querySelectorAll(".option");
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                const optionSelected = document.querySelector(".selected");
+                optionSelected.classList.remove("selected");
+
+                option.classList.add("selected")
+            })
+        })
+
+        var toggleMenu = false;
+
+        //toggle hamburger menu feature
+        const hamburguer = document.querySelector(".hamburguer-icon")
+        hamburguer.addEventListener("click", () => {
+            const groups = document.querySelectorAll(".group")
+
+            if(!toggleMenu){
+                groups.forEach(group => {
+                    group.style.display = "flex"
+                    group.classList.add("group-mobile")
+                })
+            }else{
+                groups.forEach(group => {
+                    group.style.display = "none"
+                    group.classList.remove("group-mobile")
+                })
+            }
+
+            toggleMenu = !toggleMenu;
+        })
+    </script>
+</body>
+</html>
